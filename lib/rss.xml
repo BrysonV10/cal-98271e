@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[98271E]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib\media\favicon.png</url><title>98271E</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 21 Feb 2024 14:12:08 GMT</lastBuildDate><atom:link href="lib\rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 21 Feb 2024 14:10:34 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Build Day 7]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Last week Thursday, we didn’t do an official practice because people were busy. However, Cohen came in and took off the launcher and brainstormed to make the redesign process easier.<br>Today we began redesigning and prototyping a new launcher.<br>We also began redesigning the flaps.<br><a rel="noopener" class="external-link" href="https://www.youtube.com/watch?v=9fMbS7J-IOA" target="_blank">https://www.youtube.com/watch?v=9fMbS7J-IOA</a>]]></description><link>notebook-pages\build-day-7.html</link><guid isPermaLink="false">Notebook Pages/Build Day 7.md</guid><pubDate>Thu, 16 Nov 2023 04:11:14 GMT</pubDate></item><item><title><![CDATA[Build Day 8]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Today we were doing our best to finish up our design before the league tomorrow. We got a bit more than halfway on our launcher, but it will not be ready. Our flaps are also not going to be done, but they are close.<br>Our compact design is good for both weight and compactness, but it does make building a bit more difficult. When trying to fit spacers and others into a spot where we changed the design, it takes a bit longer because we have to slide or squeeze them in.]]></description><link>notebook-pages\build-day-8.html</link><guid isPermaLink="false">Notebook Pages/Build Day 8.md</guid><pubDate>Thu, 16 Nov 2023 04:14:47 GMT</pubDate></item><item><title><![CDATA[Build Day 9]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>We started today looking at our shooter and flaps and intend to get to a good point so that we can complete them tomorrow.<br>To begin, we are dropping the shooter and redesigning it slightly so that the two motors don’t turn on the same axle. This will prevent damage to the motors and make it easier to repair.<br>Next, we are continuing to work on the flaps, and are getting closer to having our proportions between the wing locks and the piston extension correct so that it functions.<br>Finally, Ben suggested that we switch our driving method to more of a joystick inspired format rather than the tank drive we have been using. To do this, I (Bryson) had to find some mathematical formulas online to convert our current cartesian inspired driving method over to a different system. The below link is what I used to figure this out, still pending testing.<br><a data-tooltip-position="top" aria-label="https://electronics.stackexchange.com/a/293108" rel="noopener" class="external-link" href="https://electronics.stackexchange.com/a/293108" target="_blank">Algorithm for mixing 2 axis analog input to control a differential motor drive</a><br>And here is the code converting our joystick inputs to motor inputs using this new system:<br>void joystickDriving(int x, int y){
+  double r = std::sqrt((x^2)+(y^2));
+  double t = std::atan2(y, x);
+  t = t+(3.14159265358979323846263/4);
+  double right = r*std::cos(t);
+  double left = r*std::sin(t);
+
+  left = left*std::sqrt(2);
+  right=right*std::sqrt(2);
+
+  left = std::max(-1, std::min(left, 1));
+  right = std::max(-1, std::min(right, 1));
+  
+  Brain.Screen.print("%d, %d", left, right); //for testing purposes
+  Right.spin(forward, right, velocityUnits::pct);
+  Left.spin(forward, left, velocityUnits::pct);
+}
+Copy<br><img alt="20.png" src="\lib\media\20.png">]]></description><link>notebook-pages\build-day-9.html</link><guid isPermaLink="false">Notebook Pages/Build Day 9.md</guid><pubDate>Wed, 22 Nov 2023 00:00:44 GMT</pubDate><enclosure url="lib\media\20.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\20.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Build Day 10]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe<br>
+Tyler<br>
+Cohen
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Today was our last day before our league, so we were finishing our design so it’s functionable for Tomorrow.<br>Our shooter is mostly functionable, but the buttons distance needs to be slightly adjusted in order to all<br>Note: line 116 has a comment explaining how to switch between the button method shooting and the old method]]></description><link>notebook-pages\build-day-10.html</link><guid isPermaLink="false">Notebook Pages/Build Day 10.md</guid><pubDate>Thu, 16 Nov 2023 04:21:14 GMT</pubDate></item><item><title><![CDATA[Build Day 11]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Tyler<br>
+Cohen
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Today we continued getting the robot ready for our league tomorrow. We continued working on adding a sensor of some sort to the shooter to make the programming simpler and more consistent. We experimented with several sensors, eventually deciding on using a optical color sensor.<br>The contact sensors (limit switch and button) ended up being too difficult to implement and risked getting caught on the shooter itself. We have had bad experiences with the limit switches in the past, so decided against these.<br>The button was our original plan, but was difficult to space out perfectly to have the shooter push it down and toggle it without getting caught.<br>Eventually, we found a v5 optical sensor and positioned a small piece of blue colored plastic on the shooter near the sensor.<br><br>We experimented with the optical sensor for a little while.<br>
+The optical sensor has a hue readout that shows the color of the object it is pointed at. The main reason we picked this sensor over the old line trackers is the LED that can be controlled programmatically built into the sensor. We were worried about the line tracker not being effective enough in the somewhat dark environment or being manipulated by the bright lights at some of our tournaments.<br>
+We also found out this sensor has basic proximity detection, which we probably won't use for now, but could be an option for something later. ]]></description><link>notebook-pages\build-day-11.html</link><guid isPermaLink="false">Notebook Pages/Build Day 11.md</guid><pubDate>Thu, 16 Nov 2023 04:28:21 GMT</pubDate></item><item><title><![CDATA[Brainstorming]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br><br>Thinking ahead, we realized that we would likely need to begin elevating in order to be competitive in higher level competitions. Given that our robot was intentionally designed to be incredibly light it felt that the next step would be to begin elevating. We are looking into the idea of using the power of our drivetrain to drive the lift, which would give us 4 motors of power without adding any additional motors to the robot.<br>
+<img alt="IMG_3761.jpg" src="\lib\media\img_3761.jpg" style="width: 300px; max-width: 100%;"><br>
+<img alt="IMG_3762.jpg" src="\lib\media\img_3762.jpg" style="width: 300px; max-width: 100%;"><br>
+<img alt="IMG_3763.jpg" src="\lib\media\img_3763.jpg" style="width: 300px; max-width: 100%;"><br><br>Track back to our original motor allocation <a data-href="Design Day 1#Motor/Piston Allocation" href="\notebook-pages\design-day-1.html#Motor\Piston_Allocation" class="internal-link" target="_self" rel="noopener">Design Day 1 &gt; Motor/Piston Allocation</a><br>
+<br>4 motor drive
+<br>2 motor lift/elevation--
+<br>1 motor intake/hook
+<br>1 2 motor launcher
+<br>= 8 motors total<br>
+<img alt="IMG_3812.jpg" src="\lib\media\img_3812.jpg" style="width: 300px; max-width: 100%;"><br>
+<img alt="IMG_3811.jpg" src="\lib\media\img_3811.jpg" style="width: 300px; max-width: 100%;"><br>
+<img alt="IMG_3813.jpg" src="\lib\media\img_3813.jpg" style="width: 300px; max-width: 100%;"><br>
+<img alt="IMG_3814.jpg" src="\lib\media\img_3814.jpg" style="width: 300px; max-width: 100%;">]]></description><link>notebook-pages\build-day-12.html</link><guid isPermaLink="false">Notebook Pages/Build Day 12.md</guid><pubDate>Thu, 30 Nov 2023 23:47:59 GMT</pubDate><enclosure url="lib\media\img_3761.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\img_3761.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Elevation...continued]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Tyler<br>
+Cohen
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Today we continued working on our elevation system. We spent some time requesting more high strength shaft parts as we noticed that we don't have very many right now. Our prototype will likely have enough shaft collars, but we will need more if we plan on using these more.<br>
+We eventually finished up the elevator, and here are our thoughts:<br><br><img alt="Image 11-30-23, 8.08.48 PM.jpg" src="\lib\media\image-11-30-23,-8.08.48 pm.jpg" style="width: 500px; max-width: 100%;"><br>
+<img alt="Image 11-30-23, 8.08.27 PM.jpg" src="\lib\media\image-11-30-23,-8.08.27 pm.jpg" style="width: 300px; max-width: 100%;"><br>
+<img alt="Image 11-30-23, 8.08.16 PM.jpg" src="\lib\media\image-11-30-23,-8.08.16 pm.jpg" style="width: 300px; max-width: 100%;"><br>
+We thought that this design was a good idea, but had some serious fatal flaws<br><br>Using this design, it is critical that everything is incredibly well balanced in order for this to work. Down the road, if we changed something on our robot and increased the weight of it somewhat significantly, it could completely screw up the balance of the lift, and mess up the balance of our elevator. This was apparent even in our small prototype that we built.<br>
+Is this a risk worth taking?<br><br>We attached one motor to this lift, thinking that that would be enough for it to lift itself somewhat with basically no weight.<br>
+The prototype didn't move at all.<br>
+If one motor can't move it with NO weight, can 4 with the weight of an entire robot, plus stay locked when power cuts?<br><br>It was difficult for us to line this up by hand, much less while driving in the middle of a match.<br><br>We talked again about the potential of using a scissor lift, as that design is very reliable and strong when going straight up and down when built correctly. This option should be tabled for the future, so we can talk about it as a team when Ben and Chloe are back. ]]></description><link>notebook-pages\build-day-13.html</link><guid isPermaLink="false">Notebook Pages/Build Day 13.md</guid><pubDate>Fri, 01 Dec 2023 01:16:27 GMT</pubDate><enclosure url="lib\media\image-11-30-23,-8.08.48 pm.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\image-11-30-23,-8.08.48 pm.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Elevation Work]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Tyler<br>
+Cohen<br>
+Ben<br>
+Maybe Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br><a rel="noopener" class="external-link" href="https://www.youtube.com/watch?v=avsEq6aFmkU" target="_blank">https://www.youtube.com/watch?v=avsEq6aFmkU</a><br>
+After viewing that above YouTube video, we started rethinking our design. The video above has several advantages to the other design we considered:<br>
+<br>Mechanically Simpler - less points of failure
+<br>Closer to center of mass - less stress on elevation extensions
+<br>Probably quicker - though this needs testing<br>
+Downside: changes the bottom drivetrain of the robot, which may affect how we get over the center bar
+]]></description><link>notebook-pages\build-day-14.html</link><guid isPermaLink="false">Notebook Pages/Build Day 14.md</guid><pubDate>Tue, 09 Jan 2024 22:14:10 GMT</pubDate></item><item><title><![CDATA[Build Day 15]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Today we worked on continuing our design from yesterday. We decided to put the driven wheel on a hinge, which will flip and attach to the drive train, saving us motors. We also began to map the motors to better ports, and moved the brain and battery to better spots.]]></description><link>notebook-pages\build-day-15.html</link><guid isPermaLink="false">Notebook Pages/Build Day 15.md</guid><pubDate>Fri, 26 Jan 2024 00:11:43 GMT</pubDate></item><item><title><![CDATA[Updated Motor Allocation (v3)]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Tyler<br>
+Cohen<br>
+Ben<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Previously defined this at <a data-href="Build Day 12#Updated Motor Allocation" href="\notebook-pages\build-day-12.html#Updated_Motor_Allocation" class="internal-link" target="_self" rel="noopener">Build Day 12 &gt; Updated Motor Allocation</a>, but with our elevation system now tapping into our drivetrain, we can re-allocate the two motors we had allocated for it to other purposes.<br>
+<br>4 motor drive
+<br>2 motor lift/elevation
+<br>1 motor intake/hook
+<br>1 2 motor launcher
+<br>2 spare motors (for elevation stabilizer or other purposes)
+<br><br>The transmission is largely finished, but we still need to get the piston attached to have it change during the match]]></description><link>notebook-pages\build-day-16.html</link><guid isPermaLink="false">Notebook Pages/Build Day 16.md</guid><pubDate>Tue, 09 Jan 2024 22:14:17 GMT</pubDate></item><item><title><![CDATA[More Building]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Chloe<br>
+Cohen
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Today we continued working on our elevation system. Ben spent some time at home over break working on some of the arm that extends to wrap around the pole, but we had to continue working on that today. We built out the arm on linear slides to be able to extend around the pole. Cohen finished up most of our pneumatic tubing and spent some time looking for leaks.<br>
+<img alt="PXL_20240110_005330602.MP.jpg" src="\lib\media\pxl_20240110_005330602.mp.jpg" style="width: 300px; max-width: 100%;"><br>
+Ben's drawing of how the arm is going to extend and various measurements to determine the length of various parts.<br><br>While working on the notebook today, Bryson suddenly started having issues with the main <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a> page showing all of our different entries. There is an error with the Dataview query that I wrote to only show some of the notebook pages on the table. I haven't figured out the issue yet but suspect there is an issue with the plugin. I also have to produce a pdf to be able to print out the notebook for our tournament this Saturday. ]]></description><link>notebook-pages\build-day-17.html</link><guid isPermaLink="false">Notebook Pages/Build Day 17.md</guid><pubDate>Thu, 11 Jan 2024 23:45:20 GMT</pubDate><enclosure url="lib\media\pxl_20240110_005330602.mp.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\pxl_20240110_005330602.mp.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Locking and Elevation Improvements]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Cohen<br>
+Chloe<br>
+Tyler<br>
+Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a>
+<br><br>Today we spent all of our time continuing to build our elevation mechanism. We built out a small locking system that allows the tray of the elevation mechanism to lock into the frame so the gears don't detach. <br><img alt="PXL_20240117_000417382.jpg" src="\lib\media\pxl_20240117_000417382.jpg" style="width: 300px; max-width: 100%;"><br>
+In locked mode - there is a slit in the metal that holds the head of the screw in<br><img alt="PXL_20240117_000403035.jpg" src="\lib\media\pxl_20240117_000403035.jpg" style="width: 300px; max-width: 100%;"><br>
+Unlocked - This does not show the wedge that will be installed to allow for the rubber band loaded screw to go under the bar on the frame.<br>
+Our current issue now is that we need to find a way to attach our swinging arm to the robot in a way that we can have it swing out on command while fitting within our limits for inspection. The arm that extends is rather far relative to the size of the robot, so finding a solution for this is going to be interesting. Additionally, we also have to implement a ratchet system to prevent the gears from slipping backward during elevation. ]]></description><link>notebook-pages\build-day-18.html</link><guid isPermaLink="false">Notebook Pages/Build Day 18.md</guid><pubDate>Wed, 31 Jan 2024 23:59:11 GMT</pubDate><enclosure url="lib\media\pxl_20240117_000417382.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\pxl_20240117_000417382.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Continued Elevation Work]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Tyler<br>
+Chloe<br>
+Ben
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>After last week's practice where Bryson worked on a locking mechanism, Chloe worked on a way for Bryson's design to smoothly lock. Chloe added an angle above Bryson's notch for the locking screw to slide into it's locking position. Ben worked on perfecting his sliding mechanism by adding rubber bands, and moving our pneumatic reservoir to find a place to put the attachment so it will fit the sizing requirements. Bryson fixed the optical sensor port so we could test our tri-ball launcher in respect to our new elevation attachment. We have found that the new attachment actually helps us when we are trying to position our tri-balls onto our launcher. (BLACK MARK IS WHERE WE MOUNT - THURSDAY)]]></description><link>notebook-pages\build-day-19.html</link><guid isPermaLink="false">Notebook Pages/Build Day 19.md</guid><pubDate>Fri, 19 Jan 2024 00:35:55 GMT</pubDate></item><item><title><![CDATA[Continued Elevation Work (Again)]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Cohen<br>
+Tyler<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>This elevation project is ending up being a lot of work.<br>
+We marked out a spot where we wanted to place the extendable arm last practice, so today we worked on attaching this piece.<br>
+All of our pneumatic tubing that was running through the area had to be rerouted, and we had to cut one of the metal pieces holding the top and bottom of the linear slide together. We then realized that the arm was too close to the transmission tray, so to fix this we added a 5 wide steel c-channel piece to the bottom to raise it above the transmission tray. <br>When testing the system, we found out that the driving wheel near the robot did not have enough torque from the drivetrain of the robot. Even when running the drivetrain at full speed, we were not able to climb, but could hold onto the bar for a few seconds when manually positioned perfectly. <br>We tried again with a larger gear, it didn't work. We are contemplating throwing the idea out and focusing on a new one. We aren't sure what we will do instead for elevation, but we need to figure out a quick solution soon.]]></description><link>notebook-pages\build-day-20.html</link><guid isPermaLink="false">Notebook Pages/Build Day 20.md</guid><pubDate>Fri, 19 Jan 2024 01:30:47 GMT</pubDate></item><item><title><![CDATA[Build Day 21]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Chloe<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Today we worked on elevation again. We figured out we didn't have out motors operating at full capacity, so, we are able to use our elevation we have had built. However, we thought it would be a good idea to have a back-up elevation method so while Ben and Bryson worked together to fix some small things on our elevation system Chloe and Tyler worked on our back-up elevation. We have a plan to use linear slides with a "gripper" to use the across bar to elevate. Even though it isn't as high as we would like to get we are still happy we will be able to get any elevation points.<br><br>Things we needed to fix on the main elevation system:<br>
+<br>More rigid extending arm - the arm kept folding in on itself and dragging us down
+<br>Having the wheel rotate the same direction as the drive - driving backwards while trying to go into the bar did not work out very well. We need to add another gear so that the direction is reversed. 
+<br>Ratchet on the gear - without this if we lose power we will fall. 
+<br><br>Although we did get our primary elevation working, we still decided to work on a backup, as our elevation is still a bit finicky. Our plan is to have a long hook at the top that we can hook over the horizontal elevation bar and pull ourselves up. we plan on raising up this claw with two linear slides to still allow us to still drive under the bars, as we cannot consistently drive over the middle bar.]]></description><link>notebook-pages\build-day-21.html</link><guid isPermaLink="false">Notebook Pages/Build Day 21.md</guid><pubDate>Fri, 26 Jan 2024 00:20:31 GMT</pubDate></item><item><title><![CDATA[Backup Design Updates]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Tyler<br>
+Cohen<br>
+Bryson
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>At the moment the design is flawed. We were planning on having the bars pushed below the robot when we elevate, but they would then count as the bottom of the robot, weakening our elevation. We are brainstorming ways to fold the bars under our robot as we elevate.<br>
+There is also the issue of the parts. Several of the elements still use outdated screws, which we don't have many of. The two parts of the slide also don't fit together well when the gear bars are screwed in, as the screws screwing in the bar, and the screws attaching the slide holder to the robot overlap. We're thinking about drilling into them to allow them to work.<br><br>We made adjustments to a piece of c channel within the extending mechanism so that the slides fully extend.<br>
+<img alt="IMG_240125201844050.jpg" src="\lib\media\img_240125201844050.jpg" style="width: 300px; max-width: 100%;"><br>
+standoff's used as nuts were real nut could not fit<br>
+a small bumper was added to the end of the extendable arm to stop the swing arm from going to far.<br>
+<img alt="IMG_240125201930815.jpg" src="\lib\media\img_240125201930815.jpg" style="width: 300px; max-width: 100%;"><br>
+bumper with shaft as reinforcement<br>
+Additionally, Bryson added a simple ratcheting mechanism to the elevation system so that the wheel locks when we lose power.<br>
+<img alt="PXL_20240126_011423700.jpg" src="\lib\media\pxl_20240126_011423700.jpg" style="width: 300px; max-width: 100%;"><br>
+Image of one side of the ratchet - similar setup on other side]]></description><link>notebook-pages\build-day-22.html</link><guid isPermaLink="false">Notebook Pages/Build Day 22.md</guid><pubDate>Fri, 26 Jan 2024 01:30:10 GMT</pubDate><enclosure url="lib\media\img_240125201844050.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\img_240125201844050.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Build Day 23]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Tonight we continued work on our prior day of work.]]></description><link>notebook-pages\build-day-23.html</link><guid isPermaLink="false">Notebook Pages/Build Day 23.md</guid><pubDate>Sat, 10 Feb 2024 01:42:12 GMT</pubDate></item><item><title><![CDATA[To Do]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Chloe<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>
+<br>Fix wiggle
+<br>Set up pulley
+<br>~~Attach Reservoir
+<br>Transmition locks
+<br>Attach Piston
+<br>Chloe worked on attaching reservoir and changing a half channel to a c-channel on the transmition system while Tyler cleaned out the box before our weekend tournament. Ben worked on the elevation system(wiggle/pulley).]]></description><link>notebook-pages\build-day-24.html</link><guid isPermaLink="false">Notebook Pages/Build Day 24.md</guid><pubDate>Fri, 02 Feb 2024 01:11:39 GMT</pubDate></item><item><title><![CDATA[Shooter Tweaks]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Cohen<br>
+Chloe<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Today we wanted to adjust the setup of the rubber bands on the shooter. We added a small standoff on the shooter to try to prevent the rubber bands from getting pinched on the standoffs.<br>
+We also adjusted the flaps so that C channel is being used to add leverage, this makes it much more stable. <br><br>The shooter broke again at the end of practice. It only took a few practice skills for it to beak like it did last time. We need to schedule another practice before Saturday to figure out the issue and fix it.]]></description><link>notebook-pages\build-day-25-+-driving.html</link><guid isPermaLink="false">Notebook Pages/Build Day 25 + Driving.md</guid><pubDate>Sat, 10 Feb 2024 00:56:17 GMT</pubDate></item><item><title><![CDATA[Shooter Fixes]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Cohen<br>
+Chloe<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>We found that the shaft holding the launcher had bent pretty badly, so were replacing it and the driven gear shaft with high strength shafts. We had to grind down more slip gears to fit the high strength shaft. They should hopefully hold up enough for us to compete tomorrow. We added the launcher back on and added the rubber bands back on. We ended practice by having Tyler try out our new updates and practicing a minimal amount of driving. <br>Reminders for WMAA<br>
+- Plug in batteries<br>
+- Plug in charging tower<br>
+- Pump pneumatics<br>
+- Check for loose screws<br>
+- Practice driving/shooting(check if we need new or more rubber bands on shooter)]]></description><link>notebook-pages\build-day-26.html</link><guid isPermaLink="false">Notebook Pages/Build Day 26.md</guid><pubDate>Sat, 10 Feb 2024 01:51:23 GMT</pubDate></item><item><title><![CDATA[Slides]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Today we figured out how to put together our DIY linear slides. Using well spaced c-channel, we can get more consistent slides that better fit our needs. The sizing was difficult to get right. Since the parts aren't made specifically for it, and the spacing needs to be just right, it takes a lot of trial and error to get it right.<br><br>We replaced the front sloped plate in the front of our robot. The old one was cracking down the middle throughout our last tournament, and although it held up, we wanted to ensure it wouldn't brake later.<br><br>Over our long weekend for midwinter break, Ben completely rebuilt the extending arm using diy linear slides and a lot of metal. The new design is significantly more durable, more resistant to torsion, and slides out significantly easier. It is also attached to the base using more than one piece of metal.<br>
+<img alt="PXL_20240221_001009843.jpg" src="\lib\media\pxl_20240221_001009843.jpg" style="width: 300px; max-width: 100%;"><br>
+Top view<br><img alt="PXL_20240221_001023884.jpg" src="\lib\media\pxl_20240221_001023884.jpg" style="width: 300px; max-width: 100%;"><br>
+Side view<br>
+We also added a new support system for the transmission that is more solid and relies less on the pressure of the piston. This new system also puts significantly less pressure on the structure of the piston.<br>
+<img alt="PXL_20240221_001456266~2.jpg" src="\lib\media\pxl_20240221_001456266~2.jpg" style="width: 300px; max-width: 100%;"><br>
+The new support system for the transmission, when straight the piston pushes out. Pictured here compressed.<br>We also added new ratchets. We were originally using the gears typically used for tank drives, but switched over to a high strength 32 tooth gear. The new gears have less lip on the gear for the screw to catch on, but provide less opportunity for the screw to slip when the axle is moving. <br><br>Today I added new code controlling all of the new elevation gear.<br>
+Button X- run all wheels forward<br>
+Button B - run all wheels backward<br>
+Button A - extend arm<br>
+Button Y - Drop transmission<br>
+Button R2 - drivetrain torque at 30%, wheels running backward, shooter running fast<br><br>if(shooterRunningMode){
+      Right.setMaxTorque(30, percent);
+      Left.setMaxTorque(30, percent);
+      Right.spin(reverse, 40, velocityUnits::pct);
+      Left.spin(reverse, 40, velocityUnits::pct);
+      Shoot.spin(forward, 70, velocityUnits::pct);
+    } else {
+      //normal driving
+      Right.setMaxTorque(100, percent);
+      Left.setMaxTorque(100, percent);
+      Right.spin(forward,Controller1.Axis2.position(percent), velocityUnits::pct);
+      Left.spin(forward, Controller1.Axis3.position(percent), velocityUnits::pct);
+    }
+Copy<br>Code controlling the new button that toggles between shooter and regular driving]]></description><link>notebook-pages\build-day-27-28-29.html</link><guid isPermaLink="false">Notebook Pages/Build Day 27-28-29.md</guid><pubDate>Wed, 21 Feb 2024 00:30:08 GMT</pubDate><enclosure url="lib\media\pxl_20240221_001009843.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\pxl_20240221_001009843.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Drivetrain respacing]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>The spacing between each c-channel holding the drivetrain is still the initial spacing that was used as a proof of concept. By taking spacers out of in between the c-channels, we reduce the overall footprint of the robot and reduce the weight. We also took the chance to replace all of the shafts with shafts the right size without cutting any of them. Overall it had an effect of making the frame more secure and straighter as well.<br><br>The last practice we cut out one section of the slip gear, but we now need to make regular intervals around the gears. Since the gear is rewinding the launcher in one direction, we cannot reset the gear by rotating it backwards.<br>Today we spent a lot of time fixing some small kinks on the robot, like fixing the drivetrain to be more stable and standardizing some spacer spacing. We also fixed some of the progress made on the shooter last practice by stripping down a different gear. We added sections of teeth that are 3 teeth, 4 teeth, and 5 teeth so we could test different gear durations for the shooter.]]></description><link>notebook-pages\building-day-2.html</link><guid isPermaLink="false">Notebook Pages/Building Day 2.md</guid><pubDate>Thu, 16 Nov 2023 03:51:33 GMT</pubDate></item><item><title><![CDATA[Flaps]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Chloe<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>We cut down and began reconstructing our altered ‘flapper’ design. We cut each ‘flapper’ down about 2 inches to abide rule  stating that the robot may not exceed 36 inches during horizontal expansion.<br><img alt="14.jpeg" src="\lib\media\14.jpeg"><br>
+Original flaps<br><img alt="15.jpeg" src="\lib\media\15.jpeg"><br>While Chloe and Cohen worked on the ‘flapper’ Ben and Bryson worked on a way to attach all of the base bars together. For next practice we need to continue attaching the top bar used for stabilization and attach the ‘flappers’ to prepare for our fast approaching first league night.<br><br><img alt="16.jpg" src="\lib\media\16.jpg"><br>
+Model of chasis addition<br>The dotted lines would attach the entire robot together to make a metal one cohesive unit. They were previously only connected by shafts and leave space for the sections to wobble. To clear the wheels, we are raising the bars with 1.5” standoffs. This will also make a platform to attach our flipper and some of the V5 utilities.]]></description><link>notebook-pages\building-day-3.html</link><guid isPermaLink="false">Notebook Pages/Building Day 3.md</guid><pubDate>Thu, 16 Nov 2023 03:55:23 GMT</pubDate><enclosure url="lib\media\14.jpeg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\14.jpeg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Launcher mounting]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Tyler<br>
+Cohen<br>
+Ben
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>The launcher was mounted on top of the crossbeams, and we tested different angles of the range. We moved where the ball holder was mounted on the driven gears to quickly adjust the range.<br><img alt="17.jpg" src="\lib\media\17.jpg"><br>
+The driven gear allowed us to move the launcher bar<br>After we made that adjustment, it rotated the angle back enough to have the perfect start and ending position. The angle and number of rubber bands both gave us enough variability to adjust how far and how accurately we shot the balls over the barrier. We are considering making an algorithm to calculate how much power we get for the amount of rubber bands we have.<br><img alt="18.jpeg" src="\lib\media\18.jpeg"><br>
+Final angle]]></description><link>notebook-pages\building-day-4.html</link><guid isPermaLink="false">Notebook Pages/Building Day 4.md</guid><pubDate>Thu, 16 Nov 2023 03:59:08 GMT</pubDate><enclosure url="lib\media\17.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\17.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Coding]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Tyler<br>
+Ben<br>
+Cohen
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Here’s the code I added to have control over the gears and the shooter. It uses a toggle system so we only have to press the button once to start it and the button again to stop it.<br>if(shooterRunning){
+  Shoot.spin(forward, 50, velocityUnits::pct);
+} else {
+  Shoot.stop();
+}
+Copy<br>bool shooterRunning = false;
+// driver button callbacks
+void toggleShooter(){
+  shooterRunning = !shooterRunning;
+}
+Copy<br>Controller1.ButtonR1.pressed(toggleShooter);
+Copy<br>This final code block sets the toggleShooter method as the callback for when the R1 button is pressed, allowing it to run only once when a button was pressed.<br>Here’s our usercontrol code up to this point:<br>void usercontrol(void) {
+  Controller1.ButtonR1.pressed(toggleShooter);
+
+  while (1) {
+    Right.spin(forward,Controller1.Axis2.position(percent), velocityUnits::pct);
+    Left.spin(forward, Controller1.Axis3.position(percent), velocityUnits::pct);
+
+    if(shooterRunning){
+      Shoot.spin(forward, 50, velocityUnits::pct);
+    } else {
+      Shoot.stop();
+    }
+
+    
+    wait(20, msec);
+  }
+}
+Copy<br><br><img alt="19.jpeg" src="\lib\media\19.jpeg"><br>
+A comparison of our new and old gears. The right gear is the old one, with terrible cuts and inconsistent gaps. The new gear was cut much more carefully and more permanently.<br>Today we cut a new slip gear for our shooter. In our last test, we determined that having 4 teeth exposed was just the right amount for the gear to catch and hold the shooter long enough for it to load up and fire. We tested this last practice by manually pulling it back by hand (since the programming was not complete).]]></description><link>notebook-pages\building-day-5.html</link><guid isPermaLink="false">Notebook Pages/Building Day 5.md</guid><pubDate>Thu, 16 Nov 2023 04:05:20 GMT</pubDate><enclosure url="lib\media\19.jpeg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\19.jpeg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[To Dos]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>
+<br>Mount Launcher motors
+<br>wire motors
+<br>Mount resevoir
+<br>Mount brain
+<br>Pneumatic tubing
+<br>Wire pneumatics
+<br>License plate holders
+<br>In preparation of the league on Tuesday, we are attaching anything that has not yet been attached, as seen in the above list. We came up with a quick license plate holder on the sides of the robot. Our tiered design helped us fit everything into the space we have neatly(or as neat as it can be) Our slip gear was having a bit of trouble, but we think connecting the motors with a long shaft should help.<br>We are going to need a short weekend practice to finish wiring and tubing the pneumatics, as well as adding a longer shaft onto our shooter. We can also code a simple auton which would drive strait forward to put the alliance triball under the goal]]></description><link>notebook-pages\building-day-6.html</link><guid isPermaLink="false">Notebook Pages/Building Day 6.md</guid><pubDate>Thu, 16 Nov 2023 04:06:48 GMT</pubDate></item><item><title><![CDATA[Collaboration Night]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Chloe<br>
+Tyler<br>
+Cohen
+<br><br>To kick off this season, Ben and Bryson decided to host a collaboration night for the high schoolers and middle schoolers to begin brainstorming and to foster an environment of collaboration throughout the program (which is something we definitely lacked before). This is something both Grandville and Jenison do in our league, which are two leaders in the district and the state. Building the strength of the program all the way through the middles school is important to have younger students step up into more advanced roles earlier.<br>We planned to bring everyone together to allow some newer students to become comfortable with everyone and have everyone be aware of what was happening at the same time. Afterwards we wanted to break into small groups to work on more specific designs where everyone will have a better opportunity to speak. It was both of our first experience leading something an event like this in this setting, so emphasizing our organization and speaking were critical points to running it smoothly.<br><br>
+## Reflection<br>Overall, this was a somewhat productive night. While we both would’ve preferred to see a little more engagement from the older students we hoped that it would set precedent for the seniors as we leave the program this year.<br>We took images of each design pitched by each group and posted them on our program Discord server for everyone to view and discuss further.<br>Here are the images of each design, plus what pros/cons the group discussed:<br><img alt="IMG_2863.jpeg" src="\lib\media\img_2863.jpeg"><br>
+The observations from each group’s ideas. The main objective was to just get everyone critically thinking about designs.<br>With the reflection of how the night went, we were considering holding another event later in the year. Not much will be gained from it if it is held before anyone can spend time building, but we may hold it after mega league is concluded and before any tournaments start.]]></description><link>notebook-pages\cal-collaboration-night.html</link><guid isPermaLink="false">Notebook Pages/Cal Collaboration Night.md</guid><pubDate>Wed, 15 Nov 2023 03:01:50 GMT</pubDate><enclosure url="lib\media\img_2863.jpeg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\img_2863.jpeg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Here's what happened...]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Tyler<br>
+Chloe<br>
+Cohen<br>
+Bryson
+<br><br>We started today by finishing up some of the paperwork we had to finish and taking inventory of the v5 parts we were given.<br>
+Team Name was decided: Over Under Achievers<br>
+T-Shirt Color was decided: Purple<br>
+We then began discussing design and drawing it out on the whiteboard - pictures attached below<br>
+<img alt="1.jpg" src="\lib\media\1.jpg"><br>
+Drivetrain sketch - we want to use 4 wheels for the best chance of getting over the center bar in the middle of the field.<br><img alt="2.jpg" src="\lib\media\2.jpg"><br>
+Here’s our flap design (early). We want to use pneumatics to deploy the flaps during the game because of their speed and the fact that we are hitting our motor limit.<br><img alt="4.jpg" src="\lib\media\4.jpg"><br>
+A basic idea of what we want our launcher to do. We are thinking of cutting a section of the gear so that it slips and activates using the potential elastic energy in the rubber bands. This drawing is missing the bars standing straight up that hold the rubber bands holding the elastic energy.<br><br>
+<br>4 motor drive
+<br>2 motor lift/elevation
+<br>1 motor intake/hook
+<br>1 motor launcher
+<br>= 8 motors total<br>
+<br>2 piston flaps
+<br>2 reservoirs<br>
+Updated on <a data-href="Build Day 12#Updated Motor Allocation" href="\notebook-pages\build-day-12.html#Updated_Motor_Allocation" class="internal-link" target="_self" rel="noopener">Build Day 12 &gt; Updated Motor Allocation</a>
+<br><br>
+<br>Inertial (good for verifying turns and noticing pitch during elevation)
+<br>Bump (flap closing verification and other collision detection)
+<br>Color? (Line tracking/detection)
+<br><br><img alt="5.jpeg" src="\lib\media\5.jpeg"><br>
+<img alt="6.jpeg" src="\lib\media\6.jpeg"><br>
+<img alt="7.jpeg" src="\lib\media\7.jpeg"><br>The plate is temporary - we couldn’t find enough of the 3 wide C-Channel aluminum to use in the prototype.<br>Cohen suggested using two pieces of C-Channel interlocked to make it easier to fix the robot as issues come up later on in the design process.<br>He then continued working on the prototype - making it a little more solid and durable so we could have a more conclusive test next week when Ben is back.<br>We laid claim to 2 pneumatic reservoirs and 2 pistons, along with the tubing and connectors needed to use them.]]></description><link>notebook-pages\design-day-1.html</link><guid isPermaLink="false">Notebook Pages/Design Day 1.md</guid><pubDate>Thu, 30 Nov 2023 23:46:46 GMT</pubDate><enclosure url="lib\media\1.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\1.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Design Day 2 - Building Day 1]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Cohen
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Cohen and I came in today to begin working on our drivetrain of the robot. We prototyped some wheel setups last practice and are going to begin putting those ideas into action.<br>We’re using 3 wide aluminum C-Channel for the majority of the drivetrain.<br>
+<img alt="8.jpeg" src="\lib\media\8.jpeg"><br>
+Interior View of the Drivetrain<br><img alt="9.jpeg" src="\lib\media\9.jpeg"><br>
+Exterior View of the Drivetrain<br>
+<img alt="10.jpeg" src="\lib\media\10.jpeg"><br>
+Top down view of the drivetrain. The top of the image is the back of the robot. The small wheels will be installed toward the bottom of the image once we get around to it (probably next practice). Spacers also need to be adjusted so the bars are more straight.<br>We got one side of the drivetrain done, but still need to finish up the other side. All metal is already cut with bearings, just need to add axles with spacers.]]></description><link>notebook-pages\design-day-2-building-day-1.html</link><guid isPermaLink="false">Notebook Pages/Design Day 2 - Building Day 1.md</guid><pubDate>Thu, 16 Nov 2023 03:33:31 GMT</pubDate><enclosure url="lib\media\8.jpeg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\8.jpeg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Base design]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Tyler<br>
+Cohen<br>
+Ben<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>We did some short measurements with the prototype drivetrains, and we realized that it will bottom out on the barrier. We decided to try out some different wheel setups as well to see if there’s any ways we can go over the barrier without extra spinner wheels at the very front or back. We also considered the possibilities of having a geared 4 motor drive or having a geared 2 motor drive.<br><br><img alt="11.jpg" src="\lib\media\11.jpg"><br>
+4x3” without gearing<br>
+<img alt="12.jpg" src="\lib\media\12.jpg"><br>
+3x4” with gearing<br>
+<img alt="13.jpg" src="\lib\media\13.jpg"><br>
+The gearing on this prototype has two driven 80 tooth gears and 3 driven 24 tooth gears. They would have a reduced ratio of 10:3.<br>
+We did not test them, but on Thursday (9/14) we will test these two designs and the one we made previously with the smaller middle wheel.<br>There is also the possibility that we may try chain if we don’t like the gears. In the past we’ve avoided chain with fears that it will fail easily, but we also know of teams that will have lots of success as well. The main factor that will influence our decision is the space required to use one of these systems. Adding gears next to wheels reduces our available space in the rest of the robot. There may be a difference between the width of chain and conventional gears.]]></description><link>notebook-pages\design-day-3.html</link><guid isPermaLink="false">Notebook Pages/Design Day 3.md</guid><pubDate>Thu, 16 Nov 2023 03:39:32 GMT</pubDate><enclosure url="lib\media\11.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\11.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Design Day 4]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Tyler<br>
+Cohen<br>
+Bryson
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Today we continued working on building the drivetrain and started with a little bit of coding. We found out that VEX suddenly decided to discontinue the IDE we’ve been using since 8th grade (VEXcode pro), so Bryson had to look into alternatives. VEX also now published a new extension for Visual Studio Code that allows for program development there, and it seems to be the preferred option for many on the Vex forum as the successor of VEXcode pro. I (Bryson) think this is an awesome move, but currently the extension is very, very, very buggy. Everything works… sometimes.<br>On the building side, we continued working on the drivetrain. The new design we finalized last practice still seems to be the preferred option, so building continues on… We found some rubber shaft collars that everyone is loving (so much easier than the other ones).]]></description><link>notebook-pages\design-day-4.html</link><guid isPermaLink="false">Notebook Pages/Design Day 4.md</guid><pubDate>Thu, 16 Nov 2023 03:41:12 GMT</pubDate></item><item><title><![CDATA[Design Day 5]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Tyler<br>
+Cohen<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>Today we finished up the drivetrain and got the two halves we were working on done. The two sides are now connected by two pieces of angle (somewhat temporarily). We ran a test program to test how well it was running, and wanted to test if it would get over the center bar, but unfortunately we discovered that our front right motor is faulty, so we couldn’t get a good test of how well it would work.<br>NEXT PRACTICE: replace the front right motor and test how well it drives over the center bar again.]]></description><link>notebook-pages\design-day-5.html</link><guid isPermaLink="false">Notebook Pages/Design Day 5.md</guid><pubDate>Thu, 16 Nov 2023 03:42:35 GMT</pubDate></item><item><title><![CDATA[Launcher Brainstorming]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Cohen<br>
+Chloe<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>We took rule  into lots of consideration while brainstorming, which states “[Triballs can be introduced] By placing the Match Load gently onto a Robot from the Drive Team Member’s Alliance”. You can place multiple triballs onto the robot in a row and launch them across the barrier in quick succession. This also means we don’t need to be worried about being to pick up triballs as much since we can place many match loads in the time it would take to intake triballs.<br>We brainstormed multiple separate ideas, some that were introduced before we clarified the rules and some after.<br><img alt="Pasted image 20231115224556.png" src="\lib\media\pasted-image-20231115224556.png"><br>We decided to build a prototype of the frying pan design next practice as it seems to be the lightest, smallest footprint, and easiest to build.]]></description><link>notebook-pages\design-day-6.html</link><guid isPermaLink="false">Notebook Pages/Design Day 6.md</guid><pubDate>Thu, 16 Nov 2023 03:47:58 GMT</pubDate><enclosure url="lib\media\pasted-image-20231115224556.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\pasted-image-20231115224556.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Flaps]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Chloe<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>We realized that our extendable flaps exceeded the 36” limit for expansion when they would be fully open. We are planning on cutting them down by about 2” on either side to bring it within the size limits. The connection of the flaps to the frame are hinge pieces and our outside rails are facing the hollow side out. This makes it hard for it to attach to the side, so making a new hinge mechanism may be easier than using what we have.<br><br>We also began constructing a prototype of our launcher, which is a perimeter of aluminum which will rotate from the bottom to fling the triballs. Additions were made to the base in order to support the new launcher. We grinded down gears in order to make slip gears allowing our rubber band loaded launcher to release. The driven gears have gaps in the teeth so as it rewinds the launcher, it releases it at measured intervals we calculate.<br>Today we miscalculated the size we needed, and will need to regrind the gears next practice.]]></description><link>notebook-pages\design-day-7.html</link><guid isPermaLink="false">Notebook Pages/Design Day 7.md</guid><pubDate>Thu, 16 Nov 2023 03:49:50 GMT</pubDate></item><item><title><![CDATA[Man we sure do love free tiers]]></title><description><![CDATA[ 
+ <br><br><img alt="Pasted image 20231114224555.png" src="\lib\media\pasted-image-20231114224555.png"><br><br>They were telling us that we had nearly run out of "blocks" in our Notion workspace.<br>
+A "block" is the unit used whenever we hit enter and add a paragraph, or a heading, or an embed.<br>
+While this email was completely incorrect about how many blocks we had left, it brought up a concern about possibly hitting this limit later on in the season.<br>
+When we set up the Notion earlier this season, we thought that blocks were unlimited, but that turned out to only be for individual users, not for teams (like ours). <br><br>Obsidian is an self hostable alternative to Notion (FREE!!). It primarily uses Markdown to format notes, and saves all notes in an open format easily utilized in many ways.<br>
+While Obsidian stock lacks many of the features Notion had and proudly advertised, it is heavily extensible through its library of plugins and themes. Using these, we can nearly mimic Notion in many ways, all while not having to worry about paying. <br><br>
+<br>Desktop App - Obsidian is only available in the desktop app. We no longer have the versability of having our notes available after a quick Log In with Google on any computer.
+<br>Significantly nicer export workflow. Notion locks many of the nice export features behind a paywall
+<br>Significantly more customizable
+<br>Local Storage
+
+<br>Obsidian saves all notes locally. This is dangerous and prone to corruption and losing our entire notebook. To prevent this we are using <a class="internal-link" data-href="box.com" href="\box.com" target="_self" rel="noopener">Box</a> as backup storage. Using their desktop app, our cloud storage account is mounted as a drive within Windows and we can use Obsidian with a cloud backup. 
+<br>Box has a 10gb free limit which is far more than we will ever hit.
+<br>Bryson chose Box over other more common alternatives because many of the alternatives won't allow signing into multiple accounts at the same time, and he had a feeling that no one else would have a Box account considering its a much smaller competitor compared to the others. 
+
+
+<br>Embed experience isn't AS streamlined. 
+
+<br>Still possible using HTML and a little bit of critical thinking, but more challenging than Notion
+
+
+<br><br>As of November 14<br><br><br>An update to Obsidian a few months back broke the current version that is in the plugin manager (essentially app store for Obsidian plugins). Bryson went to the plugin creator's GitHub page and found the beta version, manually installing it. So far it has worked great!<br><br>Prerequisite to install DB Folder<br><br>This plugin gives us the Database functionality from Notion, but in Obsidian.<br>
+Team: Source of Database is utilizing a Dataview Query - from "Notebook Pages"<br><br>Allows us to pull images from Unsplash - an online image gallery - and use them within the Notebook seamlessly<br><br>Accent Color: rgb(73,28,155)<br>
+Base Color Scheme: Light<br>
+Primary Theme: Encore]]></description><link>notebook-pages\digital-notebook-troubles.html</link><guid isPermaLink="false">Notebook Pages/Digital Notebook Troubles.md</guid><pubDate>Wed, 15 Nov 2023 04:16:23 GMT</pubDate><enclosure url="lib\media\pasted-image-20231114224555.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\pasted-image-20231114224555.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Game Analysis]]></title><description><![CDATA[ 
+ <br><br><img alt="vexfield.png" src="\lib\media\vexfield.png"><br>
+The VEX Over Under Field Setup<br><br>Some basic math will tell us what the largest opportunity for scoring is, while that is not the only thing to take into consideration, some team will always find a way to gain all of the points possible. There are 60 triballs that can be put on the field, so without taking elevation or auton into consideration, the equation:<br><br>where g_1 is how many goals you score and o_1 is the amount of triballs are scored in your offensive zone. Where g_2 is the amount of goals your opponent scores and o_2 is the amount of triballs your opponent score in their offensive zone. Considering there are 60 triballs total (even though 4 of them are alliance specific) you can relate this to the amount of triballs scored in this model:<br><br><a rel="noopener" class="external-link" href="https://content.vexrobotics.com/docs/23-24/vrc-overunder/VRC-Manual-2324-2.0-Release.pdf" target="_blank">https://content.vexrobotics.com/docs/23-24/vrc-overunder/VRC-Manual-2324-2.0-Release.pdf</a><br>
+ An Autonomous Win Point is awarded to any Alliance that has completed the following tasks at the end of the Autonomous Period: a. Removed the Triball from the Alliance’s Match Load Zone that coincides with their Starting Tiles. For example, in Figure 21, the red Alliance must remove the Triball that begins in the bottom-left Match Load Zone, adjacent to Robot 1’s Starting Tiles. b. Scored at least one Alliance Triball in the Alliance’s own Goal. c. Ended the Autonomous Period with at least one Robot contacting their own Elevation Bar. d. Not violated any other rules.<br><img alt="startingtiles.png" src="\lib\media\startingtiles.png">]]></description><link>notebook-pages\game-analysis.html</link><guid isPermaLink="false">Notebook Pages/Game Analysis.md</guid><pubDate>Wed, 15 Nov 2023 03:37:33 GMT</pubDate><enclosure url="lib\media\vexfield.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib\media\vexfield.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Grandville Mega League]]></title><description><![CDATA[ 
+ <br>
+Present Team Members
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br><br>lost with 98271A against 4911E and 4911B because of auton<br><br>won with 248C against 8031A and 97311A because of auton<br><br>loss with 216H against 248D and 244D had a terrible teammate and REALLY good opponents<br><br>Won with 288B against 97311 and 2140J because our alliance was good and we played defense against 2140J well. We need to get better at de-scoring<br><br>lost with 4911D against 36620A and 244B]]></description><link>notebook-pages\grandville-mega-league.html</link><guid isPermaLink="false">Notebook Pages/Grandville Mega League.md</guid><pubDate>Thu, 16 Nov 2023 04:23:52 GMT</pubDate></item><item><title><![CDATA[Jenison]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Cohen<br>
+Chloe
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Today we had our first tournament at Jenison. It was relatively competitive, but still had a lot of rookie teams. Overall, we performed much better than we thought we would, and when partnered with a team that could pull their own weight, we were capable of winning. <br><br>Our skills score increased up to 105 total, and we are 81st in Michigan.<br>
+Our benchmark is 120 points overall, and we think this would get us qualified to State.<br>
+Our auton score is 53 and driver is 56, which is concerning how close these are. We think it wouldn't be too hard to adjust our driver strategy to significantly increase the number of points we can score. <br><br>We ended up being the #15 alliance and pairing with 3223D (one of Bryson's friends from WMAA). We lost by 28 points in the first match to the tournament champions, but had a ton of fun competing during this match. <br><br>We have decided to pause working on the elevation system, and make tweaks to the shooter. Ultimately the shooter is going to qualify us to state, and elevation will help us significantly during higher level play (State). ]]></description><link>notebook-pages\jenison-tournament.html</link><guid isPermaLink="false">Notebook Pages/Jenison Tournament.md</guid><pubDate>Tue, 06 Feb 2024 23:56:48 GMT</pubDate></item><item><title><![CDATA[Mega League]]></title><description><![CDATA[ 
+ <br>
+Present Team Members
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br><br>We stayed on our offensive side and scored all of the triballs our alliance shot over.<br><br>We were out competed for shooting and shoving triballs into offensive zones. If we had descored (we had an opportunity) we could’ve won<br><br>We realized without our shooter we can move under the goal and descore the other team’s scored triballs. It was difficult to do but it worked enough to win.<br><br>We stragized enough with a middle school team to use the triballs the other alliance was shooting to our advantage and keep many of them on our side. Having a bot able to descore is beginning to look like a viable strategy.<br><br>Super close match. We won auton, we scored more but they had more offensive zone triballs.<br>Auton 5 for 5]]></description><link>notebook-pages\mega-league.html</link><guid isPermaLink="false">Notebook Pages/Mega League.md</guid><pubDate>Thu, 16 Nov 2023 04:16:13 GMT</pubDate></item><item><title><![CDATA[Notebook Platform Discussion]]></title><description><![CDATA[ 
+ <br><br><br>
+<br>Easy to collaborate on multiple computers at once (with multiple accounts)
+<br>Great organization
+<br>Flexible enough for what we need, yet simple
+<br>Easy to print
+<br><br>Pros:<br>
+• Easy to collaborate<br>
+• All of us have experience with it<br>
+• Easy to print<br>
+Cons:<br>
+• Not very flexible<br>
+• Harder to organize more abstract data<br>
+• No third party embedding<br>
+• No code formatting<br><br>Pros:<br>
+• Easy to collaborate<br>
+• All of us have experience with it<br>
+• Easier to rearrange than google docs<br>
+• Allows for embedding of other media sources<br>
+• Vex has templates<br>
+Cons:<br>
+• Doesn’t have margins preset well<br>
+• No outlining<br><br>Pros:<br>
+• Easy text formatting<br>
+• Many embedding options<br>
+• Good printing<br>
+• Very fast collaboration<br>
+Cons:<br>
+<br>Only Bryson has experience
+<br><br>Pros:<br>
+<br>experience from freshmen year<br>
+Cons:
+<br>Too flexible (chaotic)
+<br>Subpar collaboration system
+<br>Printing is not great
+<br><br>We ultimately chose Notion for our engineering notebook for its collaboration features and organization system. At first look we were very impressed with its features and look forward to the flexibility it offers for us as our designs evolve.<br><br>View <a data-href="Digital Notebook Troubles" href="\notebook-pages\digital-notebook-troubles.html" class="internal-link" target="_self" rel="noopener">Digital Notebook Troubles</a> for more information]]></description><link>notebook-pages\notebook-platform-discussion.html</link><guid isPermaLink="false">Notebook Pages/Notebook Platform Discussion.md</guid><pubDate>Wed, 15 Nov 2023 03:49:29 GMT</pubDate></item><item><title><![CDATA[Team Goals]]></title><description><![CDATA[ 
+ <br><br>
+<br>Spend more time on design process
+<br>Dedicate 20 minutes at the end of practice for driving and notebook
+<br>Have a complete robot by October 12 for Mega League
+<br>Qualify for states
+<br>Qualify for worlds
+]]></description><link>notebook-pages\team-goals.html</link><guid isPermaLink="false">Notebook Pages/Team Goals.md</guid><pubDate>Wed, 15 Nov 2023 03:39:13 GMT</pubDate></item><item><title><![CDATA[Weekend Practice]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Cohen<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>
+<br>Zip air regulator
+<br>Zip wires
+<br>Wire pneumatics
+<br>Tube pneumatics
+<br>simple auton(maybe)
+<br>Fix launcher
+<br>We got everything wired and zip tied, but there were some issues in other areas. For one, we were missing a T-joint for our pneumatic tubing, meaning only one side worked at a time. We hope to get it by the competition, but we don’t have a practice in between, so someone needs to get it outside of then.<br>We tried to get the launcher to work consistently, but it also didn’t go well. The shaft we grabbed to connect the motors wasn’t long enough, so we did the best we could with the current setup. It was difficult to find the the number of rubber bands that worked the best, as our motors struggled to overcome the force. In the end, it worked semi-consistently, but it’s not very consistent, and may be dangerous to load.]]></description><link>notebook-pages\weekend-practice.html</link><guid isPermaLink="false">Notebook Pages/Weekend Practice.md</guid><pubDate>Thu, 16 Nov 2023 04:08:03 GMT</pubDate></item><item><title><![CDATA[Mega League #4]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Bryson<br>
+Ben<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Overall, we had a rough start but starting pulling everything together as we worked later into the night. We got a couple skills runs in which helped boost our ranking higher in the skills competition, but ultimately did not qualify for the Mega League Finals.<br>Due to not having reliable access to the Internet during the league, we did not update the notebook until afterward, so excuse the lack of scores.<br>Ben drove until Match 5<br><br>Our shooter wasn’t doing fantastic and our loading was a little slow, but the match came out decently close. Our shooter kept shooting too low of an arc to get over opposing robots but the new plastic scoop in the front of the robot worked like a charm to get the triballs over the middle of the field.<br>This match was replayed due to our alliance partner “white screening”. We lost both times though<br><br>Another close match, here our partners didn’t contribute super significantly to the effort but our shooter was still somewhat struggling. We did get a chance to utilize the fact that our robot is small enough to get under the goal and shove out some triballs, but nearly got hit with a penalty after the opponents stopped double zoning.<br><br><br>This match legitimately should’ve been a win.<br>Our opponent committed several penalties, giving us a 25 point sway. They hit the elevation bar while our teammate was trying to elevate, giving us 20 points of sway, plus went under the goal during autonomous, giving us 5 points of sway. We lost the match by 23 points, therefore we should’ve won it because those penalties were match affecting. However, we did not bring this up quickly enough (about 5 seconds too late) and the refs called it a loss in the book. However, before this match we did add another rubber band to both sides of the shooter, and it significantly helped our results and we had a much better arc on our shots from now on.<br><br>Bryson took over driving and the cards finally played out in our favor!<br>Tyler did a fantastic job loading the triballs onto the shooter and got into a great rhythm. Both opponents ended up getting disabled, between Bryson pinning one up with a triball and the other losing their battery. The shooter worked fantastically and one of the WMAA kids said it was beautiful watching the triballs arc over two disabled robots in the middle 🙂<br><br>Partnered up with a WMAA team, which significantly helped these odds.<br>They did a fantastic job with the match loads, and we carried the triballs into the goal afterwards.]]></description><link>notebook-pages\wmaa-mega-league.html</link><guid isPermaLink="false">Notebook Pages/WMAA Mega League.md</guid><pubDate>Thu, 16 Nov 2023 04:28:13 GMT</pubDate></item><item><title><![CDATA[The Tournament]]></title><description><![CDATA[ 
+ <br>
+Present Team Members<br>
+Ben<br>
+Bryson<br>
+Tyler
+<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br><br>Overall we did pretty good at the tournament. We ended qualification with a 3-2 win lose ratio, and ended up as 16th. We got picked for the rank 5 alliance, but lost in the quarter finals. Our robot held up very well, and everything we expected to work did.<br>We also did well in skills. We got a 97 driver and a 94 autonomous, for a total of 191. We wrote a lot of the code for the auton at the tournament, but after testing it worked very well, and got us above our target score. However, we can still improve in some areas to improve consistency and lead to a higher score.<br>We did make it into states of of our skills score, so we need to use our remaining time effectively.<br><br>I think our individual performance was very good. There were some matches where we got paired with teams with partially disabled robots, or against very high level teams. despite this we did our best and scored as much as we could.<br><br>Our arms proved to be a little janky to use. They aren't able to effectively push triballs over the middle and often pushed back at resistance. This combined with our driving scheme makes using them in smaller spaces difficult and less effective.<br>
+I subject we take another look into a design that redirects the force to the robot rather than the piston directly.<br>The Elevation is a known issue. We didn't attempt to deploy it. We plan on reworking the upper wheel to ensure a stable climb.<br>
+I subject that we also look into a simpler design that we can work on separately to ensure we have something for states.<br><br>Our launcher was very effective. During skills it was fast enough to get most to all of the triballs on the field with time to spare, and in matches it was able to quickly get shots out despite any blocking robots. Now that we've reenforced it, it didn't skip once, and held up through the whole day of driving and testing.<br>Our slope/general pushing proved to be a big strength. Since a lot of teams had faster launchers, we ended up on the goal side for a lot of our matches. However, our heavier design, sloped front, and arms all worked together to make us very effective at scoring and preventing other robots from scoring. <br><br>I think that more driving practice would be very beneficial, as although we drive well already, it is such a large part of the game that being better would mean a lot more points and would help in  all areas at state.<br>Our auton could also be improved. As of now it is not fully consistent, and if we could get part of a win point as well, that would help us drastically.]]></description><link>notebook-pages\wmaa-tournament.html</link><guid isPermaLink="false">Notebook Pages/WMAA Tournament.md</guid><pubDate>Tue, 13 Feb 2024 14:38:18 GMT</pubDate></item><item><title><![CDATA[Ben Diegel]]></title><description><![CDATA[ 
+ <br><br><img alt="center" src="\images\img_3099_20240125215109.jpg"><br>Hi I'm Ben and I am most often found building the robot. I also play tennis, ski, and run track. I'm excited as I'm looking at going to Michigan Technological University next year for college. <br><br>
+![[seniorpicpt.jpg|center]]
+Hi, my name is Bryson and I'm the head programmer of the team. This is my 9th year involved in Caledonia Robotics and my 7th year involved with Vex Robotics. Outside of robotics I participate in Cross Country and Track and Field. I'm interested in attending Michigan Technological University next year majoring in Computer Science. <br><br>
+![[image_50385153.jpg|center]]
+I'm a senior at Caledonia High School. I have participated in ski for the past 4 years. I plan to attend Ferris State University for Plastic and Rubber Engineering. I enjoy hiking, fishing, and spending time with my family and friends. <br><br>
+![[Image_87346262.jpg|center]]
+I'm a senior at Caledonia High School. I've played alto saxophone in the marching band for four years, as well as stage crew for our theater program for two years. I'm planning on attending Central Michigan University for computer science<br><br>
+![[IMG_5450_20240202223849.jpg|center]]
+Hi, my name is Chloe I am a team builder. I've been involved in robotics since my 4th grade. I'm currently dual enrolled at GVSU in Biomedical Technology and Research. I'm going to start my dentistry journey next year at either University of Detroit Mercy or Harvard.]]></description><link>about-the-team.html</link><guid isPermaLink="false">About the Team.md</guid><pubDate>Sat, 10 Feb 2024 01:09:11 GMT</pubDate><enclosure url="images\img_3099_20240125215109.jpg" length="0" type="image/jpeg"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;images\img_3099_20240125215109.jpg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Notebook]]></title><description><![CDATA[ 
+ File*Date1TagsPage<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Cal Collaboration Night.md" data-href="Notebook Pages/Cal Collaboration Night.md" href="\notebook-pages\cal-collaboration-night.html" class="internal-link" target="_self" rel="noopener">Cal Collaboration Night</a>2023-08-15<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Game Analysis.md" data-href="Notebook Pages/Game Analysis.md" href="\notebook-pages\game-analysis.html" class="internal-link" target="_self" rel="noopener">Game Analysis</a>2023-08-29<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Analysis<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Notebook Platform Discussion.md" data-href="Notebook Pages/Notebook Platform Discussion.md" href="\notebook-pages\notebook-platform-discussion.html" class="internal-link" target="_self" rel="noopener">Notebook Platform Discussion</a>2023-08-29<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Team Goals.md" data-href="Notebook Pages/Team Goals.md" href="\notebook-pages\team-goals.html" class="internal-link" target="_self" rel="noopener">Team Goals</a>2023-08-29<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Team<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 1.md" data-href="Notebook Pages/Design Day 1.md" href="\notebook-pages\design-day-1.html" class="internal-link" target="_self" rel="noopener">Design Day 1</a>2023-09-05<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 2 - Building Day 1.md" data-href="Notebook Pages/Design Day 2 - Building Day 1.md" href="\notebook-pages\design-day-2-building-day-1.html" class="internal-link" target="_self" rel="noopener">Design Day 2 - Building Day 1</a>2023-09-07<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 3.md" data-href="Notebook Pages/Design Day 3.md" href="\notebook-pages\design-day-3.html" class="internal-link" target="_self" rel="noopener">Design Day 3</a>2023-09-12<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Design<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 4.md" data-href="Notebook Pages/Design Day 4.md" href="\notebook-pages\design-day-4.html" class="internal-link" target="_self" rel="noopener">Design Day 4</a>2023-09-14<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Design<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 5.md" data-href="Notebook Pages/Design Day 5.md" href="\notebook-pages\design-day-5.html" class="internal-link" target="_self" rel="noopener">Design Day 5</a>2023-09-19<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Design<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 6.md" data-href="Notebook Pages/Design Day 6.md" href="\notebook-pages\design-day-6.html" class="internal-link" target="_self" rel="noopener">Design Day 6</a>2023-09-21<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Design<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Design Day 7.md" data-href="Notebook Pages/Design Day 7.md" href="\notebook-pages\design-day-7.html" class="internal-link" target="_self" rel="noopener">Design Day 7</a>2023-09-26<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Brainstorming<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Design<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Building Day 2.md" data-href="Notebook Pages/Building Day 2.md" href="\notebook-pages\building-day-2.html" class="internal-link" target="_self" rel="noopener">Building Day 2</a>2023-09-28<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Building Day 3.md" data-href="Notebook Pages/Building Day 3.md" href="\notebook-pages\building-day-3.html" class="internal-link" target="_self" rel="noopener">Building Day 3</a>2023-10-03<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Building Day 4.md" data-href="Notebook Pages/Building Day 4.md" href="\notebook-pages\building-day-4.html" class="internal-link" target="_self" rel="noopener">Building Day 4</a>2023-10-05<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Building Day 5.md" data-href="Notebook Pages/Building Day 5.md" href="\notebook-pages\building-day-5.html" class="internal-link" target="_self" rel="noopener">Building Day 5</a>2023-10-10<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Building Day 6.md" data-href="Notebook Pages/Building Day 6.md" href="\notebook-pages\building-day-6.html" class="internal-link" target="_self" rel="noopener">Building Day 6</a>2023-10-12<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Weekend Practice.md" data-href="Notebook Pages/Weekend Practice.md" href="\notebook-pages\weekend-practice.html" class="internal-link" target="_self" rel="noopener">Weekend Practice</a>2023-10-15<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 7.md" data-href="Notebook Pages/Build Day 7.md" href="\notebook-pages\build-day-7.html" class="internal-link" target="_self" rel="noopener">Build Day 7</a>2023-10-24<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 8.md" data-href="Notebook Pages/Build Day 8.md" href="\notebook-pages\build-day-8.html" class="internal-link" target="_self" rel="noopener">Build Day 8</a>2023-11-01<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Mega League.md" data-href="Notebook Pages/Mega League.md" href="\notebook-pages\mega-league.html" class="internal-link" target="_self" rel="noopener">Mega League</a>2023-11-02<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Competition<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 9.md" data-href="Notebook Pages/Build Day 9.md" href="\notebook-pages\build-day-9.html" class="internal-link" target="_self" rel="noopener">Build Day 9</a>2023-11-06<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 10.md" data-href="Notebook Pages/Build Day 10.md" href="\notebook-pages\build-day-10.html" class="internal-link" target="_self" rel="noopener">Build Day 10</a>2023-11-07<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Grandville Mega League.md" data-href="Notebook Pages/Grandville Mega League.md" href="\notebook-pages\grandville-mega-league.html" class="internal-link" target="_self" rel="noopener">Grandville Mega League</a>2023-11-08<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Competition<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 11.md" data-href="Notebook Pages/Build Day 11.md" href="\notebook-pages\build-day-11.html" class="internal-link" target="_self" rel="noopener">Build Day 11</a>2023-11-14<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Digital Notebook Troubles.md" data-href="Notebook Pages/Digital Notebook Troubles.md" href="\notebook-pages\digital-notebook-troubles.html" class="internal-link" target="_self" rel="noopener">Digital Notebook Troubles</a>2023-11-14<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Analysis<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/WMAA Mega League.md" data-href="Notebook Pages/WMAA Mega League.md" href="\notebook-pages\wmaa-mega-league.html" class="internal-link" target="_self" rel="noopener">WMAA Mega League</a>2023-11-15<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Competition<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 12.md" data-href="Notebook Pages/Build Day 12.md" href="\notebook-pages\build-day-12.html" class="internal-link" target="_self" rel="noopener">Build Day 12</a>2023-11-21<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 13.md" data-href="Notebook Pages/Build Day 13.md" href="\notebook-pages\build-day-13.html" class="internal-link" target="_self" rel="noopener">Build Day 13</a>2023-11-30<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 14.md" data-href="Notebook Pages/Build Day 14.md" href="\notebook-pages\build-day-14.html" class="internal-link" target="_self" rel="noopener">Build Day 14</a>2023-12-05<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 15.md" data-href="Notebook Pages/Build Day 15.md" href="\notebook-pages\build-day-15.html" class="internal-link" target="_self" rel="noopener">Build Day 15</a>2023-12-07<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Design<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 16.md" data-href="Notebook Pages/Build Day 16.md" href="\notebook-pages\build-day-16.html" class="internal-link" target="_self" rel="noopener">Build Day 16</a>2023-12-21<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 17.md" data-href="Notebook Pages/Build Day 17.md" href="\notebook-pages\build-day-17.html" class="internal-link" target="_self" rel="noopener">Build Day 17</a>2024-01-09<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 18.md" data-href="Notebook Pages/Build Day 18.md" href="\notebook-pages\build-day-18.html" class="internal-link" target="_self" rel="noopener">Build Day 18</a>2024-01-11<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 19.md" data-href="Notebook Pages/Build Day 19.md" href="\notebook-pages\build-day-19.html" class="internal-link" target="_self" rel="noopener">Build Day 19</a>2024-01-16<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 20.md" data-href="Notebook Pages/Build Day 20.md" href="\notebook-pages\build-day-20.html" class="internal-link" target="_self" rel="noopener">Build Day 20</a>2024-01-18<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 21.md" data-href="Notebook Pages/Build Day 21.md" href="\notebook-pages\build-day-21.html" class="internal-link" target="_self" rel="noopener">Build Day 21</a>2024-01-23<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 22.md" data-href="Notebook Pages/Build Day 22.md" href="\notebook-pages\build-day-22.html" class="internal-link" target="_self" rel="noopener">Build Day 22</a>2024-01-25<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 23.md" data-href="Notebook Pages/Build Day 23.md" href="\notebook-pages\build-day-23.html" class="internal-link" target="_self" rel="noopener">Build Day 23</a>2024-01-31<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 24.md" data-href="Notebook Pages/Build Day 24.md" href="\notebook-pages\build-day-24.html" class="internal-link" target="_self" rel="noopener">Build Day 24</a>2024-02-01<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Jenison Tournament.md" data-href="Notebook Pages/Jenison Tournament.md" href="\notebook-pages\jenison-tournament.html" class="internal-link" target="_self" rel="noopener">Jenison Tournament</a>2024-02-04<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 25 + Driving.md" data-href="Notebook Pages/Build Day 25 + Driving.md" href="\notebook-pages\build-day-25-+-driving.html" class="internal-link" target="_self" rel="noopener">Build Day 25 + Driving</a>2024-02-06<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 26.md" data-href="Notebook Pages/Build Day 26.md" href="\notebook-pages\build-day-26.html" class="internal-link" target="_self" rel="noopener">Build Day 26</a>2024-02-09<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/WMAA Tournament.md" data-href="Notebook Pages/WMAA Tournament.md" href="\notebook-pages\wmaa-tournament.html" class="internal-link" target="_self" rel="noopener">WMAA Tournament</a>2024-02-11<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Competition<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Pages/Build Day 27-28-29.md" data-href="Notebook Pages/Build Day 27-28-29.md" href="\notebook-pages\build-day-27-28-29.html" class="internal-link" target="_self" rel="noopener">Build Day 27-28-29</a>2024-02-15<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>Building<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="About the Team.md" data-href="About the Team.md" href="\about-the-team.html" class="internal-link" target="_self" rel="noopener">About the Team</a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Notebook Guidelines.md" data-href="Notebook Guidelines.md" href="\notebook-guidelines.html" class="internal-link" target="_self" rel="noopener">Notebook Guidelines</a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Obsidian Cheatsheet!.md" data-href="Obsidian Cheatsheet!.md" href="\obsidian-cheatsheet!.html" class="internal-link" target="_self" rel="noopener">Obsidian Cheatsheet!</a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Templates/Practice.md" data-href="Templates/Practice.md" href="\templates\practice.html" class="internal-link" target="_self" rel="noopener">Practice</a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>0<a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a><a data-tooltip-position="top" aria-label="Welcome!.md" data-href="Welcome!.md" href="\welcome!.html" class="internal-link" target="_self" rel="noopener">Welcome!</a><a class="internal-link database-plugin__embed-link" href="\notebook.html" aria-label="Notebook" target="_self"></a>+1]]></description><link>notebook.html</link><guid isPermaLink="false">Notebook.md</guid><pubDate>Wed, 21 Feb 2024 14:12:00 GMT</pubDate></item><item><title><![CDATA[Formatting Rules for our Notebook]]></title><description><![CDATA[ 
+ <br><br>
+<br>Images should have captions
+<br>Add a “toggle list” for present team members for each practice 
+<br>Media taken from the internet should have a link to the original source in the caption
+<br>In any brainstorming pages, ideas need to be clearly compared
+<br>Page number column on the main Notebook page was added for paper printout purposes - please do not add any values into this column
+]]></description><link>notebook-guidelines.html</link><guid isPermaLink="false">Notebook Guidelines.md</guid><pubDate>Tue, 09 Jan 2024 22:27:07 GMT</pubDate></item><item><title><![CDATA[Basic Formatting]]></title><description><![CDATA[ 
+ <br>When in doubt, try the Command Pallette! (CTRL+P)<br><br>Ctrl+B or asterisks x2 - Bold<br>
+Ctrl+I or asterisks x1 - Italics<br>
+# - Heading 1<br>
+## - Heading 2<br>
+### - Heading 3<br>
+#### - Heading 4<br><br><br>Upload them to the Images folder<br>
+Drag the file into the note you are working on.<br><br>Use the following syntax:<br>
+![Alt Text](https://history-computer.com/ModernComputer/Basis/images/Engelbart.jpg)<br>
+(Example found on the Obsidian Help page)<br><br>Use the Banners plugin found in the command pallette! (Ctrl+P)<br>
+I (Bryson) typically like using Unsplash images in my clipboard as banners.<br>
+You can drag banner images up and down to get correct positioning.<br>
+You can also set Icons using this same plugin!<br>
+Be sure not to directly edit the properties set by the plugin!<br><br>Tables in Markdown are kinda awful, but Obsidian has an update coming soon that will make using them much easier!<br>
+For now, here's the syntax for a table:<br>| |3x4”|4x3”|
+|---|---|---|
+| Pro | Easier upkeep | More convenient gearing|
+| Con | Lifts robot higher | Less online support |
+Copy<br>Each pipe indicates a line or end of cell in the table.<br>
+UPDATE: Obsidian pushed a new update that includes a table editor, and should be used in favor of the markdown syntax.<br><br>Embeds need to use HTML. If the site you are embedding has a embed feature already, use that code and copy paste it into the Notebook. Otherwise, use the syntax below. For google drive links, replace the last path in the URL with /preview<br>
+&lt;iframe src="https://docs.google.com/document/d/1DCVmOQUk4JrW4zLTrrLpYJX9cHuVDtX7hRVFFsIDte0/preview" style="width:100%; height:600px"&gt;&lt;/iframe&gt;<br><br>Tilda Tilda strikes through an entire line<br>
+~~ Something ~~<br>
+Something<br><br>Select the Plus icon at the bottom of the Notebook page<br>
+Type the name of the page, hit enter. The Practice page template will automatically be applied if you do not edit the other settings<br>
+The page will go to the TOP of the database because no date is entered. Enter the date of the page and it will resort.<br>
+Click the name to go into the newly created page.<br>
+There is no need to ever open the Notebook Pages folder, just use the Notebook page to find the link or the search feature.<br><br>
+<br><a class="internal-link" data-href="help.obsidian.md" href="\help.obsidian.md" target="_self" rel="noopener">Obsidian Help</a>
+<br><a class="internal-link" data-href="forum.obsidian.md" href="\forum.obsidian.md" target="_self" rel="noopener">Obsidian Forum</a>
+<br>The plugin's github repository
+<br>Reddit
+<br>ChatGPT
+]]></description><link>obsidian-cheatsheet!.html</link><guid isPermaLink="false">Obsidian Cheatsheet!.md</guid><pubDate>Tue, 09 Jan 2024 22:15:42 GMT</pubDate></item><item><title><![CDATA[Caledonia Robotics Team 98271E]]></title><description><![CDATA[ 
+ <br><br><br>Caledonia High School, Caledonia, Michigan<br>Quick Links to the Notebook!<br>
+<a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>
+<a data-href="Notebook Guidelines" href="\notebook-guidelines.html" class="internal-link" target="_self" rel="noopener">Notebook Guidelines</a><br>
+<a data-href="Obsidian Cheatsheet!" href="\obsidian-cheatsheet!.html" class="internal-link" target="_self" rel="noopener">Obsidian Cheatsheet!</a><br>
+<a data-href="About the Team" href="\about-the-team.html" class="internal-link" target="_self" rel="noopener">About the Team</a><br><br>We used a program called Obsidian (<a rel="noopener" class="external-link" href="https://obsidian.md" target="_blank">https://obsidian.md</a>) for our engineering notebook. Obsidian is a desktop program that allows our pages to be stored on device with no "free tier" limitations. (You can check <a data-href="Digital Notebook Troubles" href="\notebook-pages\digital-notebook-troubles.html" class="internal-link" target="_self" rel="noopener">Digital Notebook Troubles</a> for more on this issue).<br>
+The side navbar allows you to quickly jump to different pages. Our <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a> page shows all of the entries along with the dates they were added. Each entry also includes a section that looks like this:<br>Quick Link back to <a data-href="Notebook" href="\notebook.html" class="internal-link" target="_self" rel="noopener">Notebook</a><br>You can click the link to quickly jump back to the main notebook page. <br>]]></description><link>welcome!.html</link><guid isPermaLink="false">Welcome!.md</guid><pubDate>Sun, 28 Jan 2024 01:02:06 GMT</pubDate></item></channel></rss>
